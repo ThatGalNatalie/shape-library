@@ -18,7 +18,7 @@ TODO
 - error illustration / page
 */
 
-export default class ShapeIcons extends Component {
+export default class Shape extends Component {
   static propTypes = {
     category: PropTypes.string,
     name: PropTypes.string,
@@ -76,7 +76,7 @@ export default class ShapeIcons extends Component {
   }
 }
 
-ShapeIcons.defaultProps = {
+Shape.defaultProps = {
   size: 50,
   primaryColor: '#000',
   backgroundColor: 'none',

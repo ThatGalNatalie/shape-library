@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ShapeIcons from 'shape-library';
+import Shape from 'shape-library';
 
 const box = {
   display: 'flex',
@@ -17,7 +17,7 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div style={item}>
-          <ShapeIcons
+          <Shape
             type='illustrations'
             category='abstract'
             size={100}
