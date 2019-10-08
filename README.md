@@ -54,10 +54,9 @@ const App = () => {
   return (
     <Shape
       type='icons'
-      category='complex-filled'
+      category='color'
       name='lock'
-      primaryColor='red'
-      secondaryColor='red'
+      theme={1}
       size={100}
       backgroundColor='black'
       borderRadius={5}

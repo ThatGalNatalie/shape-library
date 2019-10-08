@@ -51,6 +51,12 @@ export default class Shape extends Component {
             spaceId={SPACE_ID}
             category={category}
             name={name}
+            size={size}
+            backgroundColor={backgroundColor}
+            borderRadius={borderRadius}
+            theme={theme}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
           />
         ) : (
           ''

@@ -18,12 +18,12 @@ export default class App extends Component {
       <div style={box}>
         <div style={item}>
           <Shape
-            type='illustrations'
-            category='abstract'
-            size={100}
-            name='bookmark'
+            type='illustration'
+            category='vibrant'
+            size={50}
+            name='growth'
             primaryColor='red'
-            secondaryColor='red'
+            backgroundColor='blue'
           />
         </div>
       </div>
