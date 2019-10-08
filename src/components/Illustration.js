@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-
+import Loading from './Loading';
 const query = `{
   illustrationTypeCollection {
     total
@@ -72,6 +72,7 @@ class Illustrations extends React.Component {
   }
   render() {
     const { data } = this.state;
+
     const {
       category,
       name,
@@ -164,15 +165,19 @@ class Illustrations extends React.Component {
 
     return (
       <div>
-        <Container
-          fill={primaryColor}
-          width={size}
-          height={size}
-          backgroundColor={backgroundColor}
-          secondaryColor={secondaryColor}
-        >
-          <div dangerouslySetInnerHTML={{ __html: code }} />
-        </Container>
+        {data === [] || code === 'undefinedundefinedundefined' ? (
+          <Loading />
+        ) : (
+          <Container
+            fill={selectedTheme.primaryColor}
+            width={size}
+            height={size}
+            backgroundColor={backgroundColor}
+            secondaryColor={secondaryColor}
+          >
+            <div dangerouslySetInnerHTML={{ __html: code }} />
+          </Container>
+        )}
       </div>
     );
   }

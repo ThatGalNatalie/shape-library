@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 const query = `
 {
@@ -95,6 +96,7 @@ class Icons extends React.Component {
           const iconName = item.name.toLowerCase();
           if (iconName === name) {
             // else - there is no icon by that name in that category
+
             iconData = item;
           }
         });
@@ -146,7 +148,7 @@ class Icons extends React.Component {
     };
 
     let selectedTheme = '';
-    console.log(this.props);
+
     if (theme === 1) {
       selectedTheme = themeOne;
     } else if (theme === 2) {
@@ -168,85 +170,91 @@ class Icons extends React.Component {
     }
     return (
       <div>
-        {iconData.d1 && iconData.d2 && iconData.d3 ? (
-          <svg width={size} height={size} viewBox='0 0 24 24'>
-            <rect
-              width='24'
-              height='24'
-              fill={backgroundColor}
-              rx={borderRadius}
-              ry={borderRadius}
-            />
-
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d1 ? iconData.d1 : ''}
-              fill={selectedTheme.secondaryColor}
-            />
-
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d2 ? iconData.d2 : ''}
-              fill={selectedTheme.primaryColor}
-            />
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d3 ? iconData.d3 : ''}
-              fill={selectedTheme.primaryColor}
-            />
-          </svg>
+        {data === [] || iconData === {} ? (
+          <Loading />
         ) : (
-          ''
-        )}
-        {iconData.d1 && iconData.d2 && iconData.d3 === null ? (
-          <svg width={size} height={size} viewBox='0 0 24 24'>
-            <rect
-              width='24'
-              height='24'
-              fill={backgroundColor}
-              rx={borderRadius}
-              ry={borderRadius}
-            />
+          <div>
+            {iconData.d1 && iconData.d2 && iconData.d3 ? (
+              <svg width={size} height={size} viewBox='0 0 24 24'>
+                <rect
+                  width='24'
+                  height='24'
+                  fill={backgroundColor}
+                  rx={borderRadius}
+                  ry={borderRadius}
+                />
 
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d1 ? iconData.d1 : ''}
-              fill={selectedTheme.secondaryColor}
-            />
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d1 ? iconData.d1 : ''}
+                  fill={selectedTheme.secondaryColor}
+                />
 
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d2 ? iconData.d2 : ''}
-              fill={selectedTheme.primaryColor}
-            />
-          </svg>
-        ) : (
-          ''
-        )}
-        {iconData.d1 && iconData.d2 === null && iconData.d3 === null ? (
-          <svg width={size} height={size} viewBox='0 0 24 24'>
-            <rect
-              width='24'
-              height='24'
-              fill={backgroundColor}
-              rx={borderRadius}
-              ry={borderRadius}
-            />
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d2 ? iconData.d2 : ''}
+                  fill={selectedTheme.primaryColor}
+                />
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d3 ? iconData.d3 : ''}
+                  fill={selectedTheme.primaryColor}
+                />
+              </svg>
+            ) : (
+              ''
+            )}
+            {iconData.d1 && iconData.d2 && iconData.d3 === null ? (
+              <svg width={size} height={size} viewBox='0 0 24 24'>
+                <rect
+                  width='24'
+                  height='24'
+                  fill={backgroundColor}
+                  rx={borderRadius}
+                  ry={borderRadius}
+                />
 
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d={iconData.d1 ? iconData.d1 : ''}
-              fill={selectedTheme.primaryColor}
-            />
-          </svg>
-        ) : (
-          ''
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d1 ? iconData.d1 : ''}
+                  fill={selectedTheme.secondaryColor}
+                />
+
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d2 ? iconData.d2 : ''}
+                  fill={selectedTheme.primaryColor}
+                />
+              </svg>
+            ) : (
+              ''
+            )}
+            {iconData.d1 && iconData.d2 === null && iconData.d3 === null ? (
+              <svg width={size} height={size} viewBox='0 0 24 24'>
+                <rect
+                  width='24'
+                  height='24'
+                  fill={backgroundColor}
+                  rx={borderRadius}
+                  ry={borderRadius}
+                />
+
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d={iconData.d1 ? iconData.d1 : ''}
+                  fill={selectedTheme.primaryColor}
+                />
+              </svg>
+            ) : (
+              ''
+            )}
+          </div>
         )}
       </div>
     );

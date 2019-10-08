@@ -6,18 +6,6 @@ import Icons from './components/Icons';
 
 const { ACCESS_TOKEN, SPACE_ID } = API.default;
 
-/*
-TODO  
-- Commited Changes Already - Need to Push 💻
-- Update README 📝
-- npm i shape-library ✅
-- include illustration
-- Instead of shapeicons -> shape
-- add preset colors
-- loading indicator
-- error illustration / page
-*/
-
 export default class Shape extends Component {
   static propTypes = {
     category: PropTypes.string,
