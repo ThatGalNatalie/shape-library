@@ -32,16 +32,16 @@ npm install --save shape-library
 
 ## Theme Colors
 
-| Theme Number | Hex Colors        |
-| ------------ | ----------------- |
-| 1            | `#FF5E5E,#1B5C6A` |
-| 2            | `#FCAACF,#2249B3` |
-| 3            | `#858585,#FED330` |
-| 4            | `#193170,#2357DD` |
-| 5            | `#F8B500,#5E227F` |
-| 6            | `#FFB6B6,#139DB8` |
-| 7            | `#FFD06F,#28323F` |
-| 8            | `#07038C,#F20505` |
+| Theme Number | Hex Colors          |
+| ------------ | ------------------- |
+| 1            | `*#FF5E5E*,#1B5C6A` |
+| 2            | `#FCAACF,#2249B3`   |
+| 3            | `#858585,#FED330`   |
+| 4            | `#193170,#2357DD`   |
+| 5            | `#F8B500,#5E227F`   |
+| 6            | `#FFB6B6,#139DB8`   |
+| 7            | `#FFD06F,#28323F`   |
+| 8            | `#07038C,#F20505`   |
 
 ## How To Use - Icons
 
@@ -55,7 +55,7 @@ const App = () => {
     <Shape
       type='icons'
       category='complex-filled'
-      name='bookmark'
+      name='lock'
       primaryColor='red'
       secondaryColor='red'
       size={100}
@@ -80,10 +80,10 @@ const App = () => {
     <Shape
       type='illustrations'
       category='abstract'
-      size={100}
       name='bookmark'
-      primaryColor='red'
-      secondaryColor='red'
+      size={100}
+      primaryColor='#051937'
+      secondaryColor='rgba(168, 235, 18)'
     />
   );
 };
