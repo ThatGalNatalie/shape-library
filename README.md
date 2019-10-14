@@ -16,6 +16,10 @@ For the full list of icons/illustrations, please head over to [Shape.so](https:/
 npm install --save shape-library
 ```
 
+```bash
+import Shape from 'shape-library';
+```
+
 ## Props
 
 | Prop            |   Type   | Default  | Description                                                                          |
