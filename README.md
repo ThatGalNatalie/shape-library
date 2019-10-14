@@ -16,6 +16,8 @@ For the full list of icons/illustrations, please head over to [Shape.so](https:/
 npm install --save shape-library
 ```
 
+## Import
+
 ```bash
 import Shape from 'shape-library';
 ```
