@@ -28,7 +28,7 @@ npm install --save shape-library
 | backgroundColor | `string` |  `none`  | Hex colors, rgba, and browser supported colors                                       |
 | theme           | `number` |   `0`    | Enter a number from 1-8 to specify each themes. See chart below for specific colors  |
 | size            | `number` |   `24`   | Changes the width and height of the icon/illustrations                               |
-| borderRadius    | `number` |   `0`    | Changes the rx on the <rect/> element                                                |
+| borderRadius    | `number` |   `0`    | Changes the rx on the `<rect/>` element                                              |
 
 ## Theme Colors
 

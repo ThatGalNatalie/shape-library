@@ -39,9 +39,9 @@ export default class Shape extends Component {
             spaceId={SPACE_ID}
             category={category}
             name={name}
-            size={size}
+            size={size ? size : 900}
             backgroundColor={backgroundColor}
-            borderRadius={borderRadius}
+            borderRadius={!borderRadius ? 0 : borderRadius}
             theme={theme}
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
@@ -55,7 +55,7 @@ export default class Shape extends Component {
             spaceId={SPACE_ID}
             category={category}
             name={name}
-            size={size}
+            size={size ? size : 54}
             backgroundColor={backgroundColor}
             borderRadius={borderRadius}
             theme={theme}
@@ -71,7 +71,6 @@ export default class Shape extends Component {
 }
 
 Shape.defaultProps = {
-  size: 54,
   type: 'icons',
   category: 'simple',
   name: 'lock',

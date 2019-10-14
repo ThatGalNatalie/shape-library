@@ -8,23 +8,13 @@ const box = {
   justifyContent: 'center'
 };
 
-const item = {
-  marginTop: 300
-};
-
 export default class App extends Component {
   render() {
     return (
       <div style={box}>
-        <div style={item}>
-          <Shape
-            type='illustrations'
-            category='Scenes'
-            name='editing (female)'
-            size={900}
-            primaryColor=''
-            secondaryColor=''
-          />
+        <div>
+          <Shape type='icons' category='blue' name='mic off' theme={1} />
+          <Shape type='illustrations' category='Scenes' name='Editing (Male)' theme={1} />
         </div>
       </div>
     );
