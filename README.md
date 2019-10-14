@@ -106,16 +106,7 @@ import React from 'react';
 import Shape from 'shape-library';
 
 const App = () => {
-  return (
-    <Shape
-      type='illustrations'
-      category='abstract'
-      name='bookmark'
-      size={100}
-      primaryColor='#051937'
-      secondaryColor='rgba(168, 235, 18)'
-    />
-  );
+  return <Shape type='illustrations' category='abstract' name='code' size={900} theme={1} />;
 };
 
 export default App;
