@@ -18,17 +18,17 @@ npm install --save shape-library
 
 ## Props
 
-| Prop            |   Type   |   Default   | Description                                                                           |
-| --------------- | :------: | :---------: | ------------------------------------------------------------------------------------- |
-| type            | `string` |   `none`    | Specifies between rendering an icon or an illustration                                |
-| category        | `string` | `undefined` | The type of icons/illustrations. Example: Color, Bold-Filled, Object, Elements        |
-| name            | `string` | `undefined` | The name of the icons/illustrations. Example: lock, home, bookmark                    |
-| primaryColor    | `string` |   `#000`    | Hex colors, rgba, and browser supported colors. The fill for the icons/illustrationss |
-| secondaryColors | `string` |   `#000`    | Hex colors, rgba, and browser supported colors. The fill for the icons/illustrationss |
-| backgroundColor | `string` |   `none`    | Hex colors, rgba, and browser supported colors                                        |
-| theme           | `number` |     `0`     | Enter a number from 1-8 to specify each themes. See chart below for specific colors   |
-| size            | `number` |     `0`     | Changes the width and height of the icon/illustrations                                |
-| borderRadius    | `number` |     `0`     | Changes the rx on the <rect/> element                                                 |
+| Prop            |   Type   | Default  | Description                                                                          |
+| --------------- | :------: | :------: | ------------------------------------------------------------------------------------ |
+| type            | `string` | `icons`  | Specifies between rendering an icon or an illustration                               |
+| category        | `string` | `simple` | The type of icons/illustrations. Example: Color, Bold-Filled, Object, Elements       |
+| name            | `string` |  `lock`  | The name of the icons/illustrations. Example: lock, home, bookmark                   |
+| primaryColor    | `string` |  `#000`  | Hex colors, rgba, and browser supported colors. The fill for the icons/illustrations |
+| secondaryColors | `string` |  `#000`  | Hex colors, rgba, and browser supported colors. The fill for the icons/illustrations |
+| backgroundColor | `string` |  `none`  | Hex colors, rgba, and browser supported colors                                       |
+| theme           | `number` |   `0`    | Enter a number from 1-8 to specify each themes. See chart below for specific colors  |
+| size            | `number` |   `24`   | Changes the width and height of the icon/illustrations                               |
+| borderRadius    | `number` |   `0`    | Changes the rx on the <rect/> element                                                |
 
 ## Theme Colors
 
