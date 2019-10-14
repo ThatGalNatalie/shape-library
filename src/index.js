@@ -71,8 +71,12 @@ export default class Shape extends Component {
 }
 
 Shape.defaultProps = {
-  size: 50,
-  primaryColor: '#000',
+  size: 54,
+  type: 'icons',
+  category: 'simple',
+  name: 'lock',
+  primaryColor: 'black',
+  secondaryColor: '#f7f5f6',
   backgroundColor: 'none',
   borderRadius: 0
 };

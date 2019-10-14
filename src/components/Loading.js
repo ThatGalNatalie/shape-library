@@ -1,80 +1,161 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Container = styled.div`
-  #loader {
-    /* Uncomment this to make it run! */
-    /*
-     animation: loader 5s linear infinite; 
-  */
+// NOTE
+/*
+Loader found at: https://codepen.io/asmaharjan/pen/EuaIF
+*/
 
-    position: absolute;
-    top: calc(50% - 20px);
-    left: calc(50% - 20px);
+const Container = styled.div`
+  .container {
+    width: 200px;
+    height: 100px;
+    padding-top: 100px;
+    margin: 0 auto;
   }
-  @keyframes loader {
+
+  .ball {
+    width: 90px;
+    height: 10px;
+    margin: 10px auto;
+    border-radius: 50px;
+  }
+  .ball:nth-of-type(1) {
+    background: #d33ca3;
+    -webkit-animation: right 1s infinite ease-in-out;
+    -moz-animation: right 1s infinite ease-in-out;
+    animation: right 1s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(2) {
+    background: #39d09a;
+    -webkit-animation: left 1.1s infinite ease-in-out;
+    -moz-animation: left 1.1s infinite ease-in-out;
+    animation: left 1.1s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(3) {
+    background: #2b6ae8;
+    -webkit-animation: right 1.05s infinite ease-in-out;
+    -moz-animation: right 1.05s infinite ease-in-out;
+    animation: right 1.05s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(4) {
+    background: #824df3;
+    -webkit-animation: left 1.15s infinite ease-in-out;
+    -moz-animation: left 1.15s infinite ease-in-out;
+    animation: left 1.15s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(5) {
+    background: #db2f59;
+    -webkit-animation: right 1.1s infinite ease-in-out;
+    -moz-animation: right 1.1s infinite ease-in-out;
+    animation: right 1.1s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(6) {
+    background: #fc7161;
+    -webkit-animation: left 1.05s infinite ease-in-out;
+    -moz-animation: left 1.05s infinite ease-in-out;
+    animation: left 1.05s infinite ease-in-out;
+  }
+
+  .ball:nth-of-type(7) {
+    background: #ffbc4b;
+    -webkit-animation: right 1s infinite ease-in-out;
+    -moz-animation: right 1s infinite ease-in-out;
+    animation: right 1s infinite ease-in-out;
+  }
+
+  @-webkit-keyframes right {
     0% {
-      left: -100px;
-    }
-    100% {
-      left: 110%;
-    }
-  }
-  #box {
-    width: 50px;
-    height: 50px;
-    background: #aa24fe;
-    animation: animate 0.5s linear infinite;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 3px;
-  }
-  @keyframes animate {
-    17% {
-      border-bottom-right-radius: 3px;
-    }
-    25% {
-      transform: translateY(9px) rotate(22.5deg);
+      -webkit-transform: translate(-15px);
     }
     50% {
-      transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-      border-bottom-right-radius: 40px;
-    }
-    75% {
-      transform: translateY(9px) rotate(67.5deg);
+      -webkit-transform: translate(15px);
     }
     100% {
-      transform: translateY(0) rotate(90deg);
+      -webkit-transform: translate(-15px);
     }
   }
-  #shadow {
-    width: 50px;
-    height: 5px;
-    background: #000;
-    opacity: 0.1;
-    position: absolute;
-    top: 59px;
-    left: 0;
-    border-radius: 50%;
-    animation: shadow 0.5s linear infinite;
-  }
-  @keyframes shadow {
+
+  @-webkit-keyframes left {
+    0% {
+      -webkit-transform: translate(15px);
+    }
     50% {
-      transform: scale(1.2, 1);
+      -webkit-transform: translate(-15px);
+    }
+    100% {
+      -webkit-transform: translate(15px);
+    }
+  }
+
+  @-moz-keyframes right {
+    0% {
+      -moz-transform: translate(-15px);
+    }
+    50% {
+      -moz-transform: translate(15px);
+    }
+    100% {
+      -moz-transform: translate(-15px);
+    }
+  }
+
+  @-moz-keyframes left {
+    0% {
+      -moz-transform: translate(15px);
+    }
+    50% {
+      -moz-transform: translate(-15px);
+    }
+    100% {
+      -moz-transform: translate(15px);
+    }
+  }
+
+  @keyframes right {
+    0% {
+      transform: translate(-15px);
+    }
+    50% {
+      transform: translate(15px);
+    }
+    100% {
+      transform: translate(-15px);
+    }
+  }
+
+  @keyframes left {
+    0% {
+      transform: translate(15px);
+    }
+    50% {
+      transform: translate(-15px);
+    }
+    100% {
+      transform: translate(15px);
     }
   }
 `;
 
-function Loading() {
+const Loading = () => {
   return (
     <Container>
-      <div id='loader'>
-        <div id='shadow'></div>
-        <div id='box'></div>
+      <div className='container'>
+        <div className='ball'></div>
+        <div className='ball'></div>
+        <div className='ball'></div>
+        <div className='ball'></div>
+        <div className='ball'></div>
+        <div className='ball'></div>
+        <div className='ball'></div>
       </div>
     </Container>
   );
-}
+};
 
 export default Loading;

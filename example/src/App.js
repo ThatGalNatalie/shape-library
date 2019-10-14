@@ -17,7 +17,14 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div style={item}>
-          <Shape type='icons' category='complex-filled' size={50} name='lock' theme={1} />
+          <Shape
+            type='illustrations'
+            category='Scenes'
+            name='editing (female)'
+            size={900}
+            primaryColor=''
+            secondaryColor=''
+          />
         </div>
       </div>
     );
