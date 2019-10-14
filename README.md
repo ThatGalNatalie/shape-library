@@ -32,16 +32,41 @@ npm install --save shape-library
 
 ## Theme Colors
 
-| Theme Number | Hex Colors        |
-| ------------ | ----------------- |
-| 1            | `#FF5E5E,#1B5C6A` |
-| 2            | `#FCAACF,#2249B3` |
-| 3            | `#858585,#FED330` |
-| 4            | `#193170,#2357DD` |
-| 5            | `#F8B500,#5E227F` |
-| 6            | `#FFB6B6,#139DB8` |
-| 7            | `#FFD06F,#28323F` |
-| 8            | `#07038C,#F20505` |
+```js
+const themeOne = {
+  primaryColor: '#FF5E5E',
+  secondaryColor: '#1B5C6A'
+};
+
+const themeTwo = {
+  primaryColor: '#FCAACF',
+  secondaryColor: '#2249B3'
+};
+
+const themeThree = {
+  primaryColor: '#193170',
+  secondaryColor: '#2357DD'
+};
+
+const themeFour = {
+  primaryColor: '#F8B500',
+  secondaryColor: '#5E227F'
+};
+const themeFive = {
+  primaryColor: '#FFB6B6',
+  secondaryColor: '#139DB8'
+};
+
+const themeSix = {
+  primaryColor: '#FFD06F',
+  secondaryColor: '#28323F'
+};
+
+const themeSeven = {
+  primaryColor: '#07038C',
+  secondaryColor: '#F20505'
+};
+```
 
 ## How To Use - Icons
 
