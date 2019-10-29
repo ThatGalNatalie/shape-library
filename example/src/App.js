@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import Lottie from 'react-lottie';
 
 import Shape from 'shape-library';
 
@@ -13,8 +14,7 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div>
-          <Shape type='icons' category='blue' name='mic off' theme={1} />
-          <Shape type='illustrations' category='Scenes' name='Editing (Male)' theme={1} />
+          <Shape type='animatedicons' category='Scenes' name='bin' theme={2} />
         </div>
       </div>
     );

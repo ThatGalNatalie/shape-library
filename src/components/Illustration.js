@@ -26,13 +26,6 @@ const query = `{
   }
 }`;
 
-// FIXME  Fixes
-// 2. borderRadius = {} -> breaks, is it possible to put 0 when the value is null
-
-// 13. Update ReadME
-// 14. Fix props with no value -> right now it crashes
-// 15. 404 for spelling errors
-
 class Illustrations extends React.Component {
   static propTypes = {
     category: PropTypes.string,

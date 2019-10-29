@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import * as API from '../config';
 import Illustrations from './components/Illustration';
 import Icons from './components/Icons';
+import AnimatedIllustrations from './components/AnimatedIllustrations';
+import AnimatedIcons from './components/AnimatedIcons';
 
 const { ACCESS_TOKEN, SPACE_ID } = API.default;
 
@@ -27,12 +29,14 @@ export default class Shape extends Component {
       secondaryColor,
       backgroundColor,
       borderRadius,
-      theme
+      theme,
+      type
     } = this.props;
-
+    console.log(type);
+    console.log(this.props);
     return (
       <div>
-        {this.props.type.toLowerCase() === 'illustration' ||
+        {/* {this.props.type.toLowerCase() === 'illustration' ||
         this.props.type.toLowerCase() === 'illustrations' ? (
           <Illustrations
             accessToken={ACCESS_TOKEN}
@@ -62,6 +66,57 @@ export default class Shape extends Component {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
           />
+        ) : (
+          ''
+        )} */}
+
+        {type.toLowerCase() === 'animatedillustrations' ? (
+          <AnimatedIllustrations
+            accessToken={ACCESS_TOKEN}
+            spaceId={SPACE_ID}
+            category={category}
+            name={name}
+            theme={theme}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+          />
+        ) : type.toLowerCase() === 'illustrations' ? (
+          <Illustrations
+            accessToken={ACCESS_TOKEN}
+            spaceId={SPACE_ID}
+            category={category}
+            name={name}
+            size={size ? size : 900}
+            backgroundColor={backgroundColor}
+            borderRadius={!borderRadius ? 0 : borderRadius}
+            theme={theme}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+          />
+        ) : type.toLowerCase() === 'icons' ? (
+          <Icons
+            accessToken={ACCESS_TOKEN}
+            spaceId={SPACE_ID}
+            category={category}
+            name={name}
+            size={size ? size : 54}
+            backgroundColor={backgroundColor}
+            borderRadius={borderRadius}
+            theme={theme}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+          />
+        ) : type.toLowerCase() === 'animatedicons' ? (
+          // <AnimatedIcons
+          //   accessToken={ACCESS_TOKEN}
+          //   spaceId={SPACE_ID}
+          //   category={category}
+          //   name={name}
+          //   theme={theme}
+          //   primaryColor={primaryColor}
+          //   secondaryColor={secondaryColor}
+          // />
+          <div>coming soon</div>
         ) : (
           ''
         )}
