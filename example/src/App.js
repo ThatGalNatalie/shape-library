@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div>
-          <Shape type='animatedicons' category='Scenes' name='bin' theme={2} />
+          <Shape type='illustrations' category='playful' name='online shopping' theme={1} />
         </div>
       </div>
     );

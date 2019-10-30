@@ -13,7 +13,6 @@ const query = `
         items{
             ... on Icon {
               name
-              url
               d1
               d2
               d3
@@ -89,7 +88,7 @@ class Icons extends React.Component {
 
     let iconData = {};
     let is404 = false;
-
+    console.log(data);
     data.filter(function(icon) {
       if (icon.type.toLowerCase() === category.toLowerCase()) {
         // else - the category does not exist

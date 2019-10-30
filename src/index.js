@@ -32,8 +32,7 @@ export default class Shape extends Component {
       theme,
       type
     } = this.props;
-    console.log(type);
-    console.log(this.props);
+
     return (
       <div>
         {/* {this.props.type.toLowerCase() === 'illustration' ||
@@ -107,16 +106,18 @@ export default class Shape extends Component {
             secondaryColor={secondaryColor}
           />
         ) : type.toLowerCase() === 'animatedicons' ? (
-          // <AnimatedIcons
-          //   accessToken={ACCESS_TOKEN}
-          //   spaceId={SPACE_ID}
-          //   category={category}
-          //   name={name}
-          //   theme={theme}
-          //   primaryColor={primaryColor}
-          //   secondaryColor={secondaryColor}
-          // />
-          <div>coming soon</div>
+          <AnimatedIcons
+            accessToken={ACCESS_TOKEN}
+            spaceId={SPACE_ID}
+            category={category}
+            name={name}
+            theme={theme}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+            backgroundColor={backgroundColor}
+            borderRadius={borderRadius}
+            size={size}
+          />
         ) : (
           ''
         )}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import Loading from './Loading';
 
 const query = `{
   animatedIconCollection {
@@ -64,13 +65,13 @@ class AnimatedIcons extends React.Component {
 
   render() {
     const {
-      accessToken,
-      spaceId,
       name,
-      category,
       theme,
       primaryColor,
-      secondaryColor
+      secondaryColor,
+      size,
+      backgroundColor,
+      borderRadius
     } = this.props;
     const { iconData } = this.state;
 
@@ -84,51 +85,68 @@ class AnimatedIcons extends React.Component {
       } catch (error) {}
     });
 
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result
+        ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+          }
+        : null;
+    }
+
+    function shapeColorConverter(r, g, b) {
+      const arr = '[' + r / 255 + ', ' + g / 255 + ', ' + b / 255 + ']';
+
+      return arr;
+    }
+
     const themeOne = {
-      primaryColor: '#FF5E5E',
-      secondaryColor: '#1B5C6A'
+      themePrimaryColor: '[0.11,0.36,0.42,1]',
+      themeSecondaryColor: '[1,0.37,0.37,1]'
     };
 
     const themeTwo = {
-      primaryColor: '#FCAACF',
-      secondaryColor: '#2249B3'
+      themePrimaryColor: '[0.13,0.29,0.7,1]',
+      themeSecondaryColor: '[0.98,0.66,0.81,1]'
     };
 
     const themeThree = {
-      primaryColor: '#193170',
-      secondaryColor: '#2357DD'
+      themePrimaryColor: '[0.14,0.34,0.86,1]',
+      themeSecondaryColor: '[0.1,0.2,0.44,1]'
     };
 
     const themeFour = {
-      primaryColor: '#F8B500',
-      secondaryColor: '#5E227F'
+      themePrimaryColor: '[47,34,127, 0.8]',
+      themeSecondaryColor: '[248,181,0, 0.8]'
     };
     const themeFive = {
-      primaryColor: '#FFB6B6',
-      secondaryColor: '#139DB8'
+      themePrimaryColor: '[47,34,127, 0.8]',
+      themeSecondaryColor: '[248,181,0, 0.8]'
     };
 
     const themeSix = {
-      primaryColor: '#FFD06F',
-      secondaryColor: '#28323F'
+      themePrimaryColor: '[0.1,0.2,0.2,1]',
+      themeSecondaryColor: '[1,0.8,0.4,1]'
     };
 
     const themeSeven = {
-      primaryColor: '#07038C',
-      secondaryColor: '#F20505'
+      themePrimaryColor: '[0.9,0.02,0.02,1]',
+      themeSecondaryColor: '[0.2,0.01,0.5,1]'
     };
 
     const defaultThemes = {
-      primaryColor: primaryColor,
-      secondaryColor: secondaryColor
+      themePrimaryColor: primaryColor,
+      themeSecondaryColor: secondaryColor
     };
 
     const defaultColors = {
       // primaryColor: '#303131',
       // secondaryColor: '#4A90E2'
 
-      primaryColor: '#f7f5f6',
-      secondaryColor: 'black'
+      themePrimaryColor: '[0,0,0,0]',
+      themeSecondaryColor: '[0,0,0,0]'
     };
 
     let selectedTheme = '';
@@ -147,35 +165,143 @@ class AnimatedIcons extends React.Component {
       selectedTheme = themeSix;
     } else if (theme === 7) {
       selectedTheme = themeSeven;
-    } else if (this.props.primaryColor || this.props.secondaryColor) {
-      selectedTheme = defaultThemes;
     } else {
       selectedTheme = defaultColors;
     }
-    const testString = selected.code1 + '[1,1,1,1]' + selected.code2;
-    console.log(testString);
-    // selected.code2 +
-    // selected.code3 +
-    // '[0,0,0,0]' +
-    // selected.code4 +
-    // '[0,0,0,0]' +
-    // selected.code5 +
-    // '[0,0,0,0]';
+
+    if (primaryColor || secondaryColor) {
+      const primary = hexToRgb(primaryColor);
+      const second = hexToRgb(secondaryColor);
+
+      const one = shapeColorConverter(primary.r, primary.g, primary.b);
+      const two = shapeColorConverter(second.r, second.g, second.b);
+
+      defaultThemes.themePrimaryColor = one;
+      defaultThemes.themeSecondaryColor = two;
+      selectedTheme = defaultThemes;
+    }
+
+    let color = '';
+
+    if (
+      selected.code1 &&
+      selected.code2 &&
+      selected.code3 &&
+      selected.code4 &&
+      selected.code5 &&
+      selected.backgroundCode1 &&
+      selected.backgroundCode2 &&
+      selected.backgroundCode3
+    ) {
+      color =
+        selected.code1 +
+        `${selectedTheme.themeSecondaryColor}` +
+        selected.code2 +
+        `${selectedTheme.themePrimaryColor}` +
+        selected.code3 +
+        `${selectedTheme.themeSecondaryColor}` +
+        selected.code4 +
+        `${selectedTheme.themePrimaryColor}` +
+        selected.code5 +
+        '0' +
+        selected.backgroundCode1 +
+        '0' +
+        selected.backgroundCode2 +
+        `${selectedTheme.themeSecondaryColor}` +
+        selected.backgroundCode3;
+    } else if (
+      selected.code1 &&
+      selected.code2 &&
+      selected.code3 &&
+      selected.code4 &&
+      selected.code5 === null &&
+      selected.backgroundCode1 &&
+      selected.backgroundCode2 &&
+      selected.backgroundCode3
+    ) {
+      color =
+        selected.code1 +
+        '[1,1,1,1]' +
+        selected.code2 +
+        '[0.133, 0.65, 0.7, 1]' +
+        selected.code3 +
+        '[1,1,1,1]' +
+        selected.code4 +
+        '[0.133, 0.65, 0.7, 1]' +
+        selected.backgroundCode1 +
+        '0' +
+        selected.backgroundCode2 +
+        '[0.97, 0.6, 0.6,1]' +
+        selected.backgroundCode3;
+    } else if (
+      selected.code1 &&
+      selected.code2 &&
+      selected.code3 &&
+      selected.code4 === null &&
+      selected.code5 === null &&
+      selected.backgroundCode1 &&
+      selected.backgroundCode2 &&
+      selected.backgroundCode3
+    ) {
+      color =
+        selected.code1 +
+        '[1,1,1,1]' +
+        selected.code2 +
+        '[0.133, 0.65, 0.7, 1]' +
+        selected.code3 +
+        '[1,1,1,1]' +
+        selected.backgroundCode1 +
+        '0' +
+        selected.backgroundCode2 +
+        '[0.97, 0.6, 0.6,1]' +
+        selected.backgroundCode3;
+    } else if (
+      selected.code1 &&
+      selected.code2 &&
+      selected.code3 === null &&
+      selected.code4 === null &&
+      selected.code5 === null &&
+      selected.backgroundCode1 &&
+      selected.backgroundCode2 &&
+      selected.backgroundCode3
+    ) {
+      color =
+        selected.code1 +
+        '[1,1,1,1]' +
+        selected.code2 +
+        '[0.133, 0.65, 0.7, 1]' +
+        selected.backgroundCode1 +
+        '0' +
+        selected.backgroundCode2 +
+        '[0.97, 0.6, 0.6,1]' +
+        selected.backgroundCode3;
+    }
 
     return (
-      <div>
-        {/* <Lottie
-          options={{
-            loop: true,
-            autoplay: true,
-            animationData: JSON.parse(testString),
-            rendererSettings: {
-              preserveAspectRatio: 'xMidYMid slice'
-            }
-          }}
-          height={900}
-          width={900}
-        /> */}
+      <div
+        style={{
+          backgroundColor: `${backgroundColor ? backgroundColor : 'none'}`,
+          borderRadius: borderRadius
+        }}
+      >
+        {color !== '' ? (
+          <div>
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: JSON.parse(color),
+                rendererSettings: {
+                  preserveAspectRatio: 'xMidYMid slice'
+                }
+              }}
+              height={size ? size : 150}
+              width={size ? size : 150}
+            />
+          </div>
+        ) : (
+          <Loading />
+        )}
       </div>
     );
   }
