@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import Lottie from 'react-lottie';
 
-import Shape from 'shape-library';
+import Shape from "shape-library";
 
 const box = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
 };
 
 export default class App extends Component {
@@ -14,7 +14,12 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div>
-          <Shape type='illustrations' category='playful' name='online shopping' theme={1} />
+          <Shape
+            type="animatedillustrations"
+            category="SCENES"
+            name="online buy products"
+            theme={1}
+          />
         </div>
       </div>
     );

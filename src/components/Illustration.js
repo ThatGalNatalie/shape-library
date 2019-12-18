@@ -1,14 +1,58 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Loading from './Loading';
+import Loading from "./Loading";
 
-const query = `{
+/*
+{
+  illustrationTypeCollection(limit: 18) {
+    total
+    items {
+      name
+      illustrationsCollection(limit: 600) {
+        total
+        items {
+          ... on Illustration {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+*/
+
+/*
+{
   illustrationTypeCollection {
     total
     items {
       name
       illustrationsCollection {
+        total
+        items {
+          ... on Illustration {
+            name
+            color1
+            color2
+            code
+            code2
+            code3
+            tags
+          }
+        }
+      }
+    }
+  }
+}
+*/
+
+const query = `{
+  illustrationTypeCollection(limit: 18) {
+    total
+    items {
+      name
+      illustrationsCollection(limit: 600) {
         total
         items {
           ... on Illustration {
@@ -45,16 +89,19 @@ class Illustrations extends React.Component {
   }
   componentDidMount() {
     const { accessToken, spaceId } = this.props;
-    fetch(`https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/master`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${accessToken}`
-      },
-      body: JSON.stringify({
-        query
-      })
-    })
+    fetch(
+      `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/master`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+          query
+        })
+      }
+    )
       .then(res => res.json())
       .then(response => {
         const { data } = response;
@@ -82,7 +129,7 @@ class Illustrations extends React.Component {
       borderRadius
     } = this.props;
 
-    let selected = '';
+    let selected = "";
 
     data.map(function(item) {
       if (item.name.toLowerCase() === category.toLowerCase()) {
@@ -102,37 +149,37 @@ class Illustrations extends React.Component {
     const code = `${selected.code}${selected.code2}${selected.code3}`;
 
     const themeOne = {
-      primaryColor: '#FF5E5E',
-      secondaryColor: '#1B5C6A'
+      primaryColor: "#FF5E5E",
+      secondaryColor: "#1B5C6A"
     };
 
     const themeTwo = {
-      primaryColor: '#FCAACF',
-      secondaryColor: '#2249B3'
+      primaryColor: "#FCAACF",
+      secondaryColor: "#2249B3"
     };
 
     const themeThree = {
-      primaryColor: '#193170',
-      secondaryColor: '#2357DD'
+      primaryColor: "#193170",
+      secondaryColor: "#2357DD"
     };
 
     const themeFour = {
-      primaryColor: '#F8B500',
-      secondaryColor: '#5E227F'
+      primaryColor: "#F8B500",
+      secondaryColor: "#5E227F"
     };
     const themeFive = {
-      primaryColor: '#FFB6B6',
-      secondaryColor: '#139DB8'
+      primaryColor: "#FFB6B6",
+      secondaryColor: "#139DB8"
     };
 
     const themeSix = {
-      primaryColor: '#FFD06F',
-      secondaryColor: '#28323F'
+      primaryColor: "#FFD06F",
+      secondaryColor: "#28323F"
     };
 
     const themeSeven = {
-      primaryColor: '#07038C',
-      secondaryColor: '#F20505'
+      primaryColor: "#07038C",
+      secondaryColor: "#F20505"
     };
 
     const defaultThemes = {
@@ -144,11 +191,11 @@ class Illustrations extends React.Component {
       // primaryColor: '#303131',
       // secondaryColor: '#4A90E2'
 
-      primaryColor: '#f7f5f6',
-      secondaryColor: 'black'
+      primaryColor: "#f7f5f6",
+      secondaryColor: "black"
     };
 
-    let selectedTheme = '';
+    let selectedTheme = "";
 
     if (theme === 1) {
       selectedTheme = themeOne;
@@ -172,7 +219,7 @@ class Illustrations extends React.Component {
 
     function getSVGContents(inputString) {
       let domParser = new DOMParser();
-      let svgDOM = domParser.parseFromString(inputString, 'text/xml');
+      let svgDOM = domParser.parseFromString(inputString, "text/xml");
       let nums = [];
 
       if (svgDOM !== undefined) {
@@ -185,11 +232,11 @@ class Illustrations extends React.Component {
         //   }
         // }
 
-        for (var i = 0; i <= svgDOM.getElementsByTagName('*').length - 1; i++) {
+        for (var i = 0; i <= svgDOM.getElementsByTagName("*").length - 1; i++) {
           if (
-            svgDOM.getElementsByTagName('*')[i].getAttribute('fill') === ' ' ||
-            svgDOM.getElementsByTagName('*')[i].getAttribute('fill') === '' ||
-            svgDOM.getElementsByTagName('*')[i].getAttribute('fill') === '  '
+            svgDOM.getElementsByTagName("*")[i].getAttribute("fill") === " " ||
+            svgDOM.getElementsByTagName("*")[i].getAttribute("fill") === "" ||
+            svgDOM.getElementsByTagName("*")[i].getAttribute("fill") === "  "
           ) {
             nums.push(i);
           }
@@ -198,19 +245,19 @@ class Illustrations extends React.Component {
         try {
           if (nums.length === 2) {
             svgDOM
-              .getElementsByTagName('*')
-              [nums[0]].setAttribute('fill', selectedTheme.primaryColor);
+              .getElementsByTagName("*")
+              [nums[0]].setAttribute("fill", selectedTheme.secondaryColor);
 
             svgDOM
-              .getElementsByTagName('*')
-              [nums[1]].setAttribute('fill', selectedTheme.secondaryColor);
+              .getElementsByTagName("*")
+              [nums[1]].setAttribute("fill", selectedTheme.primaryColor);
           } else if (nums.length === 1) {
             svgDOM
-              .getElementsByTagName('*')
-              [nums[0]].setAttribute('fill', selectedTheme.primaryColor);
+              .getElementsByTagName("*")
+              [nums[0]].setAttribute("fill", selectedTheme.primaryColor);
           }
 
-          return svgDOM.getElementsByTagName('svg')[0].innerHTML;
+          return svgDOM.getElementsByTagName("svg")[0].innerHTML;
         } catch (error) {}
 
         // try {
@@ -250,7 +297,7 @@ class Illustrations extends React.Component {
 
 Illustrations.defaultProps = {
   borderRadius: 0,
-  backgroundColor: 'none',
+  backgroundColor: "none",
   size: 900
 };
 
