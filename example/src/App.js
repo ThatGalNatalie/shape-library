@@ -16,9 +16,10 @@ export default class App extends Component {
         <div>
           <Shape
             type="animatedillustrations"
-            category="SCENES"
-            name="online buy products"
-            theme={1}
+            category="ABSTRACT"
+            name="download"
+            primaryColor="red"
+            secondaryColor="red"
           />
         </div>
       </div>
