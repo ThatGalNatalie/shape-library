@@ -14,13 +14,7 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div>
-          <Shape
-            type="animatedillustrations"
-            category="ABSTRACT"
-            name="download"
-            primaryColor="red"
-            secondaryColor="red"
-          />
+          <Shape type="animatedicons" category="SIMPLE-ANIMATED" name="drag" />
         </div>
       </div>
     );
