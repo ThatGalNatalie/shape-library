@@ -310,38 +310,20 @@ class AnimatedIllustrations extends React.Component {
 
     let selectedTheme = "";
 
-    if (theme === 1) {
-      selectedTheme = themeOne;
-    } else if (theme === 2) {
-      selectedTheme = themeTwo;
-    } else if (theme === 3) {
-      selectedTheme = themeThree;
-    } else if (theme === 4) {
-      selectedTheme = themeFour;
-    } else if (theme === 5) {
-      selectedTheme = themeFive;
-    } else if (theme === 6) {
-      selectedTheme = themeSix;
-    } else if (theme === 7) {
-      selectedTheme = themeSeven;
-    } else {
-      selectedTheme = defaultColors;
-    }
-
     if (
-      colourNameToHex(this.props.primaryColor) !== false ||
-      colourNameToHex(this.props.secondaryColor) !== false
+      colourNameToHex(primaryColor) !== false ||
+      colourNameToHex(secondaryColor) !== false
     ) {
       // a name
 
       try {
-        const hex1 = colourNameToHex(this.props.primaryColor);
+        const hex1 = colourNameToHex(primaryColor);
         const rgb1 = hexToRgb(hex1);
 
         const arr1 =
           "[" + rgb1.r / 255 + ", " + rgb1.g / 255 + ", " + rgb1.b / 255 + "]";
 
-        const hex2 = colourNameToHex(this.props.secondaryColor);
+        const hex2 = colourNameToHex(secondaryColor);
         const rgb2 = hexToRgb(hex2);
 
         const arr2 =
@@ -357,9 +339,11 @@ class AnimatedIllustrations extends React.Component {
 
     let primaryHex = "";
     let secondaryColorHex = "";
+
     if (
-      this.props.primaryColor[0] === "#" ||
-      this.props.secondaryColor[0] === "#"
+      primaryColor[0] === "#" &&
+      secondaryColor[0] === "#" &&
+      theme === undefined
     ) {
       function hexToRgb(hex) {
         // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -378,8 +362,8 @@ class AnimatedIllustrations extends React.Component {
           : null;
       }
 
-      primaryHex = hexToRgb(this.props.primaryColor);
-      secondaryColorHex = hexToRgb(this.props.secondaryColor);
+      primaryHex = hexToRgb(primaryColor);
+      secondaryColorHex = hexToRgb(secondaryColor);
 
       const arr1 =
         "[" +
@@ -402,6 +386,28 @@ class AnimatedIllustrations extends React.Component {
       defaultThemes.themeSecondaryColor = arr2;
 
       selectedTheme = defaultThemes;
+    }
+
+    if (theme === 1) {
+      selectedTheme = themeOne;
+    } else if (theme === 2) {
+      selectedTheme = themeTwo;
+    } else if (theme === 3) {
+      selectedTheme = themeThree;
+    } else if (theme === 4) {
+      selectedTheme = themeFour;
+    } else if (theme === 5) {
+      selectedTheme = themeFive;
+    } else if (theme === 6) {
+      selectedTheme = themeSix;
+    } else if (theme === 7) {
+      selectedTheme = themeSeven;
+    } else if (
+      theme === undefined &&
+      primaryColor[0] !== "#" &&
+      secondaryColor[0] !== "#"
+    ) {
+      selectedTheme = defaultColors;
     }
 
     const code = `${selected.code1}${selected.code2}${selected.code3}`;

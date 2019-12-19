@@ -14,7 +14,13 @@ export default class App extends Component {
     return (
       <div style={box}>
         <div>
-          <Shape type="animatedicons" category="SIMPLE-ANIMATED" name="drag" />
+          <Shape
+            type="animatedicons"
+            category="SIMPLE-ANIMATED"
+            name="lock"
+            theme={1}
+            backgroundColor="red"
+          />
         </div>
       </div>
     );

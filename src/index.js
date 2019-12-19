@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import * as API from '../config';
-import Illustrations from './components/Illustration';
-import Icons from './components/Icons';
-import AnimatedIllustrations from './components/AnimatedIllustrations';
-import AnimatedIcons from './components/AnimatedIcons';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import * as API from "../config";
+import Illustrations from "./components/Illustration";
+import Icons from "./components/Icons";
+import AnimatedIllustrations from "./components/AnimatedIllustrations";
+import AnimatedIcons from "./components/AnimatedIcons";
 
 const { ACCESS_TOKEN, SPACE_ID } = API.default;
 
@@ -69,7 +69,7 @@ export default class Shape extends Component {
           ''
         )} */}
 
-        {type.toLowerCase() === 'animatedillustrations' ? (
+        {type.toLowerCase() === "animatedillustrations" ? (
           <AnimatedIllustrations
             accessToken={ACCESS_TOKEN}
             spaceId={SPACE_ID}
@@ -79,7 +79,7 @@ export default class Shape extends Component {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
           />
-        ) : type.toLowerCase() === 'illustrations' ? (
+        ) : type.toLowerCase() === "illustrations" ? (
           <Illustrations
             accessToken={ACCESS_TOKEN}
             spaceId={SPACE_ID}
@@ -92,7 +92,7 @@ export default class Shape extends Component {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
           />
-        ) : type.toLowerCase() === 'icons' ? (
+        ) : type.toLowerCase() === "icons" ? (
           <Icons
             accessToken={ACCESS_TOKEN}
             spaceId={SPACE_ID}
@@ -105,7 +105,7 @@ export default class Shape extends Component {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
           />
-        ) : type.toLowerCase() === 'animatedicons' ? (
+        ) : type.toLowerCase() === "animatedicons" ? (
           <AnimatedIcons
             accessToken={ACCESS_TOKEN}
             spaceId={SPACE_ID}
@@ -119,7 +119,7 @@ export default class Shape extends Component {
             size={size}
           />
         ) : (
-          ''
+          ""
         )}
       </div>
     );
@@ -127,11 +127,11 @@ export default class Shape extends Component {
 }
 
 Shape.defaultProps = {
-  type: 'icons',
-  category: 'simple',
-  name: 'lock',
-  primaryColor: 'black',
-  secondaryColor: '#f7f5f6',
-  backgroundColor: 'none',
+  type: "icons",
+  category: "simple",
+  name: "lock",
+  primaryColor: "#000",
+  secondaryColor: "#000",
+  backgroundColor: "none",
   borderRadius: 0
 };

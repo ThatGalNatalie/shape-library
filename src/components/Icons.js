@@ -216,7 +216,12 @@ class Icons extends React.Component {
     }
 
     return (
-      <div>
+      <div
+        style={{
+          backgroundColor: backgroundColor ? backgroundColor : "none",
+          borderRadius: borderRadius ? borderRadius : 0
+        }}
+      >
         {iconData === {} ? (
           <svg
             className="illustration"
