@@ -2,51 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 
-/*
-{
-  typeCollection(limit: 15) {
-    items {
-      type
-      iconsCollection(limit: 500) {
-        items {
-          ... on Icon {
-            name
-          }
-        }
-      }
-    }
-  }
-}
-*/
-
-/*
-{
-  typeCollection {
-    total
-    items {
-      type
-      iconsCollection {
-        total
-        items{
-            ... on Icon {
-              name
-              d1
-              d2
-              d3
-              color1
-              color2
-              color3
-              opacity
-              tags
-            }
-        }
-      }
-    }
-  }
-}
-
-*/
-
 const query = `
 {
   typeCollection(limit: 15) {

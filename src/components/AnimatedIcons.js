@@ -1,5 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
+var contentful = require("contentful");
 import Loading from "./Loading";
 
 /*
@@ -51,33 +52,28 @@ class AnimatedIcons extends React.Component {
       backgroundColor,
       borderRadius
     } = this.props;
-    fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/master`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${accessToken}`
-        },
-        body: JSON.stringify({
-          query
-        })
-      }
-    )
-      .then(res => res.json())
-      .then(response => {
-        const { data } = response;
 
-        this.setState({
-          iconData: data.animatedIconCollection.items
-            ? data.animatedIconCollection.items
-            : []
+    const allAnimatedIcons = [];
+    const types = [];
+
+    const client = contentful.createClient({
+      space: space,
+      accessToken: accessToken
+    });
+
+    client.getEntry("6hJEyfky1ufaHrO9QQrxBe").then(function(entry) {
+      const list = entry.fields.list[0].fields.icons;
+      list.map(type => types.push(type.sys.id));
+
+      types.map(typeid => {
+        client.getEntries({ "sys.id": typeid }).then(response => {
+          allAnimatedIcons.push(response.items[0].fields);
+
+          localStorage.setItem("icons", JSON.stringify(allAnimatedIcons));
         });
-      })
-      .catch(error => {
-        // error page
-        console.log(error);
       });
+    });
+    this.setState({ iconData: JSON.parse(localStorage.getItem("icons")) });
   }
 
   render() {
@@ -253,7 +249,6 @@ class AnimatedIcons extends React.Component {
     }
 
     let color = "";
-
     if (
       selected.code1 &&
       selected.code2 &&
@@ -264,7 +259,7 @@ class AnimatedIcons extends React.Component {
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log(1);
+      console.log("all 5");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -281,17 +276,19 @@ class AnimatedIcons extends React.Component {
         selected.backgroundCode2 +
         `${selectedTheme.themeSecondaryColor}` +
         selected.backgroundCode3;
-    } else if (
+    }
+
+    if (
       selected.code1 &&
       selected.code2 &&
       selected.code3 &&
       selected.code4 &&
-      selected.code5 === null &&
+      selected.code5 === undefined &&
       selected.backgroundCode1 &&
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log(2);
+      console.log("all 4");
       color =
         selected.code1 +
         `${selectedTheme.themePrimaryColor}` +
@@ -306,17 +303,19 @@ class AnimatedIcons extends React.Component {
         selected.backgroundCode2 +
         "[1,1,1]" +
         selected.backgroundCode3;
-    } else if (
+    }
+
+    if (
       selected.code1 &&
       selected.code2 &&
       selected.code3 &&
-      selected.code4 === null &&
-      selected.code5 === null &&
+      selected.code4 === undefined &&
+      selected.code5 === undefined &&
       selected.backgroundCode1 &&
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log(3);
+      console.log("all 3");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -329,17 +328,17 @@ class AnimatedIcons extends React.Component {
         selected.backgroundCode2 +
         "[1,1,1]" +
         selected.backgroundCode3;
-    } else if (
+    }
+
+    if (
       selected.code1 &&
       selected.code2 &&
-      selected.code3 === null &&
-      selected.code4 === null &&
-      selected.code5 === null &&
+      selected.code3 === undefined &&
       selected.backgroundCode1 &&
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log(4);
+      console.log("all 2");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -351,6 +350,8 @@ class AnimatedIcons extends React.Component {
         "[1,1,1]" +
         selected.backgroundCode3;
     }
+
+    console.log(selected);
     return (
       <div>
         {color !== "" ? (
@@ -371,6 +372,7 @@ class AnimatedIcons extends React.Component {
         ) : (
           <Loading />
         )}
+        <h1>for now</h1>
       </div>
     );
   }

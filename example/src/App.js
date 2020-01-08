@@ -3,23 +3,17 @@ import React, { Component } from "react";
 
 import Shape from "shape-library";
 
-const box = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center"
-};
-
 export default class App extends Component {
   render() {
     return (
-      <div style={box}>
+      <div>
         <div>
           <Shape
             type="animatedicons"
             category="SIMPLE-ANIMATED"
-            name="lock"
-            theme={1}
-            backgroundColor="red"
+            name="subtract"
+            primaryColor="#808000"
+            secondarColor="#000"
           />
         </div>
       </div>
