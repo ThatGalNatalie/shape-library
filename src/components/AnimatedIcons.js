@@ -57,7 +57,7 @@ class AnimatedIcons extends React.Component {
     const types = [];
 
     const client = contentful.createClient({
-      space: space,
+      space: spaceId,
       accessToken: accessToken
     });
 
@@ -372,7 +372,6 @@ class AnimatedIcons extends React.Component {
         ) : (
           <Loading />
         )}
-        <h1>for now</h1>
       </div>
     );
   }
