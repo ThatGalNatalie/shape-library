@@ -78,6 +78,7 @@ export default class Shape extends Component {
             theme={theme}
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
+            size={size}
           />
         ) : type.toLowerCase() === "illustrations" ? (
           <Illustrations

@@ -65,7 +65,14 @@ class AnimatedIllustrations extends React.Component {
   }
 
   render() {
-    const { category, name, theme, primaryColor, secondaryColor } = this.props;
+    const {
+      category,
+      name,
+      theme,
+      primaryColor,
+      secondaryColor,
+      size
+    } = this.props;
     const { illustrationData } = this.state;
     let selected = "";
 
@@ -328,7 +335,6 @@ class AnimatedIllustrations extends React.Component {
 
         const arr2 =
           "[" + rgb2.r / 255 + ", " + rgb2.g / 255 + ", " + rgb2.b / 255 + "]";
-        console.log(2, arr2);
 
         defaultThemes.themePrimaryColor = arr1;
         defaultThemes.themeSecondaryColor = arr2;
@@ -446,8 +452,8 @@ class AnimatedIllustrations extends React.Component {
                 preserveAspectRatio: "xMidYMid slice"
               }
             }}
-            height={900}
-            width={900}
+            height={size ? size : 900}
+            width={size ? size : 900}
           />
         ) : (
           <Loading />

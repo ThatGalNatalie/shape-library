@@ -259,7 +259,6 @@ class AnimatedIcons extends React.Component {
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log("all 5");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -288,7 +287,6 @@ class AnimatedIcons extends React.Component {
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log("all 4");
       color =
         selected.code1 +
         `${selectedTheme.themePrimaryColor}` +
@@ -315,7 +313,6 @@ class AnimatedIcons extends React.Component {
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log("all 3");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -338,7 +335,6 @@ class AnimatedIcons extends React.Component {
       selected.backgroundCode2 &&
       selected.backgroundCode3
     ) {
-      console.log("all 2");
       color =
         selected.code1 +
         `${selectedTheme.themeSecondaryColor}` +
@@ -351,7 +347,6 @@ class AnimatedIcons extends React.Component {
         selected.backgroundCode3;
     }
 
-    console.log(selected);
     return (
       <div>
         {color !== "" ? (

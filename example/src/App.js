@@ -9,11 +9,9 @@ export default class App extends Component {
       <div>
         <div>
           <Shape
-            type="animatedicons"
-            category="SIMPLE-ANIMATED"
-            name="subtract"
-            primaryColor="#808000"
-            secondarColor="#000"
+            type="animatedillustrations"
+            category="Scenes"
+            name="Office Desk"
           />
         </div>
       </div>

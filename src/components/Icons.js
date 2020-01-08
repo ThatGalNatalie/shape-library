@@ -85,7 +85,6 @@ class Icons extends React.Component {
 
     let iconData = {};
     let is404 = false;
-    console.log(data);
     data.filter(function(icon) {
       if (icon.type.toLowerCase() === category.toLowerCase()) {
         // else - the category does not exist
@@ -94,7 +93,6 @@ class Icons extends React.Component {
             if (item.name.toLowerCase() === name.toLowerCase()) {
               // else - there is no icon by that name in that category
               iconData = item;
-              console.log(item);
             }
           } catch (error) {}
         });
